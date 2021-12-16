@@ -77,7 +77,7 @@ def getSong(bpm):
     for s in song_choice_differences:
         if (s[1] < song_min[1]):
             song_min = s
-    return song_min
+    return song_min[0]
 
 def filter_signal(r):
     fs = 100 #sample rate
