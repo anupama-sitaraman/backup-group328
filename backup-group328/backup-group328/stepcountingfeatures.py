@@ -8,7 +8,7 @@ from scipy.signal import butter, lfilter, freqz, iirnotch, filtfilt, firwin
 import sys
 import math
 
-def filtSignal(x_signal, y_signal, z_signal, timestamps):
+def filtSignal(window): #x_signal, y_signal, z_signal, timestamps
     sampling_rate = 100
     # nyq = sampling_rate/2
     # cutoff = 3.05/nyq
@@ -24,10 +24,10 @@ def filtSignal(x_signal, y_signal, z_signal, timestamps):
     steps = 0
 
     for k in range(0, len(timestamps)):
-        x.append(x_signal[k])
-        y.append(y_signal[k])
-        z.append(z_signal[k])
-        accel_time.append(timestamps[k])
+        x.append(window[0][k]) #x_signal[k]
+        y.append(window[1][k]) #y_signal[k]
+        z.append(window[2][k]) #z_signal[k]
+        accel_time.append(window[3][k]) #timestamps[k]
         accel_mag.append(math.sqrt(x[k]*2+y[k]*2+z[k]*2))
 
     for i in range(0, len(accel_mag), buffer_window_size - 1):
@@ -96,7 +96,7 @@ def filter_signal(r):
 
 def getSteps(x_signal, y_signal, z_signal, timestamps):
     #peak_baseline = filter_signal(r)[0]
-    steps = filtSignal(x_signal, y_signal, z_signal, timestamps)[3]
+    steps = filtSignal(window)[3] #x_signal, y_signal, z_signal, timestamps
     return steps #len(peak_baseline)
 
 def getEntropy(originalSig):
