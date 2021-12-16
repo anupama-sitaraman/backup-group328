@@ -57,7 +57,7 @@ def filtSignal(window): #x_signal, y_signal, z_signal, timestamps
 
             max = filt.max()
             min = filt.min()
-            dynamic_threshold = 1#(max+min)/2
+            dynamic_threshold = (max+min)/2
 
         for j in range(0, len(filt)-1):
             if((filt[j+1] < dynamic_threshold) and (filt[j-1] > dynamic_threshold) and accel_mag[j] > dynamic_threshold and (accel_mag[j-1] not in step_locations)):
@@ -108,7 +108,7 @@ def filter_signal(r):
             peak_locations.append(r[j])
     return peak_baseline, peak_locations, filtered_signal
 
-def getSteps(x_signal, y_signal, z_signal, timestamps):
+def getSteps(window):#x_signal, y_signal, z_signal, timestamps):
     #peak_baseline = filter_signal(r)[0]
     steps = filtSignal(window)[3] #x_signal, y_signal, z_signal, timestamps
     return steps #len(peak_baseline)
