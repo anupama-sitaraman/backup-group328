@@ -51,25 +51,28 @@ time_elapsed_seconds = (data[n_samples,0] - data[0,0]) / 1000
 sampling_rate = n_samples / time_elapsed_seconds
 
 # TODO: list the class labels that you collected data for in the order of label_index (defined in collect-labelled-data.py)
-class_names = ["running", "walking", "speed walking", "sitting","dancing"]
+#class_names = ["running", "walking", "speed walking", "sitting","dancing"]
 
-print("Extracting features and labels for window size {} and step size {}...".format(window_size, step_size))
-sys.stdout.flush()
+#print("Extracting features and labels for window size {} and step size {}...".format(window_size, step_size))
+#sys.stdout.flush()
 
 X = []
 Y = []
 
 for i,window_with_timestamp_and_label in slidingWindow(data, window_size, step_size):
     window = window_with_timestamp_and_label[:,1:-1]   
-    feature_names, x = extract_features(window)
+    #feature_names, x = extract_features(window)
     X.append(x)
     Y.append(window_with_timestamp_and_label[10, -1])
     
-X = np.asarray(X)
-Y = np.asarray(Y)
-n_features = len(X)
+#X = np.asarray(X)
+#Y = np.asarray(Y)
+#n_features = len(X)
+
+songName = getSong(filtSignal(window)[4])
+print(songName)
     
-print("Finished feature extraction over {} windows".format(len(X)))
-print("Unique labels found: {}".format(set(Y)))
-print("\n")
+#print("Finished feature extraction over {} windows".format(len(X)))
+#print("Unique labels found: {}".format(set(Y)))
+#print("\n")
 sys.stdout.flush()
