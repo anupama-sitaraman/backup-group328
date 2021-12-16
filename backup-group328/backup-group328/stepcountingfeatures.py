@@ -24,9 +24,9 @@ def filtSignal(window): #x_signal, y_signal, z_signal, timestamps
     steps = 0
 
     for k in range(0, len(window[3])):
-        x.append(window[0][k][0]) #x_signal[k]
-        y.append(window[1][1][k]) #y_signal[k]
-        z.append(window[2][2][k]) #z_signal[k]
+        x.append(window[0][k]) #x_signal[k]
+        y.append(window[1][k]) #y_signal[k]
+        z.append(window[2][k]) #z_signal[k]
         accel_time.append(window[3][k]) #timestamps[k]
         r = np.sqrt((x[k]**2)+(y[k]**2)+(z[k]**2))
         #print(x[k])
