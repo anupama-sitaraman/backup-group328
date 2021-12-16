@@ -68,6 +68,16 @@ def filtSignal(window): #x_signal, y_signal, z_signal, timestamps
         bpm = 60*len(step_locations)/(accel_time[-1]-accel_time[0])
     return step_baseline, step_locations, filt, steps, bpm
 
+def getSong(bpm):
+    song_choices = [("I write sins not tragadies" , 170), ("Applause", 140), ("Tik Tok", 120),("Dancing Queen", 100), ("Lover", 69)]
+    song_choice_differences = [] 
+    for s in range(0, len(song_choices)):
+        song_choice_differences = (song_choices[s][0], math.abs(song_choices[s][1] - bpm))
+    song_min = ("none", 100000)
+    for s in song_choice_differences:
+        if (s[1] < song_min[1]):
+            song_min = s
+    return song_min
 
 def filter_signal(r):
     fs = 100 #sample rate
