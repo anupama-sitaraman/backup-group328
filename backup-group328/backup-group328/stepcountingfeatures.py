@@ -72,10 +72,10 @@ def getSong(bpm):
     song_choices = [("I write sins not tragadies" , 170), ("Applause", 140), ("Tik Tok", 120),("Dancing Queen", 100), ("Lover", 69)]
     song_choice_differences = [] 
     for s in range(0, len(song_choices)):
-        song_choice_differences = (song_choices[s][0], (abs(song_choices[s][1] - bpm)))
+        song_choice_differences.append(song_choices[s][0], (abs(song_choices[s][1] - bpm)))
     song_min = ("none", 100000)
     for s in song_choice_differences:
-        if ((int)s[1] < song_min[1]):
+        if (s[1] < song_min[1]):
             song_min = s
     return song_min[0]
 
