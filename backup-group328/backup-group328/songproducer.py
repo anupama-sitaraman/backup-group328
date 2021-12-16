@@ -2,7 +2,7 @@ import os
 import sys
 import numpy as np
 from sklearn.tree import export_graphviz
-from features import extract_features
+from stepcountingfeatures import extract_features
 from util import slidingWindow, reorient, reset_vars
 import pickle
 from sklearn import model_selection
