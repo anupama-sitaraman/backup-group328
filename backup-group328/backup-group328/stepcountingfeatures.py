@@ -65,7 +65,7 @@ def filtSignal(window): #x_signal, y_signal, z_signal, timestamps
                 step_locations.append(accel_mag[j])
                 step_baseline.append(accel_time[j])
 
-        bpm = 60*len(step_locations)/(accel_time[-1]-accel_time[0])
+    bpm = 60*len(step_locations)/(accel_time[-1]-accel_time[0])
     return step_baseline, step_locations, filt, steps, bpm
 
 def getSong(bpm):
