@@ -76,6 +76,7 @@ def getSong(bpm):
     song_min = ("none", 100000)
     for s in song_choice_differences:
         print(s[1])
+        print(bpm)
         if (s[1] < song_min[1]):
             song_min = s
     return song_min[0]
