@@ -118,7 +118,7 @@ def getSteps(window):#x_signal, y_signal, z_signal, timestamps):
     return steps #len(peak_baseline)
 
 def getEntropy(originalSig):
-    hist_distribution = np.histogram(originalSig)
+    hist_distribution = np.histogram(originalSig)[0]
     modified_hist_distribution = []
     for h in hist_distribution:
         if(h == 0):
