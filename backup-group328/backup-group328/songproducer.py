@@ -60,7 +60,10 @@ sys.stdout.flush()
 #Y = []
 
 for i,window_with_timestamp_and_label in slidingWindow(data, window_size, step_size):
-    window = window_with_timestamp_and_label[:,1:-1]   
+    window = window_with_timestamp_and_label[:,1:-1]
+    if(i%10==0):
+        songName = getSong(filtSignal(window)[4])
+        print(songName)
     #feature_names, x = extract_features(window)
     #X.append(x)
     #Y.append(window_with_timestamp_and_label[10, -1])
@@ -69,8 +72,8 @@ for i,window_with_timestamp_and_label in slidingWindow(data, window_size, step_s
 #Y = np.asarray(Y)
 #n_features = len(X)
 
-songName = getSong(filtSignal(window)[4])
-print(songName)
+#songName = getSong(filtSignal(window)[4])
+#print(songName)
     
 #print("Finished feature extraction over {} windows".format(len(X)))
 #print("Unique labels found: {}".format(set(Y)))
