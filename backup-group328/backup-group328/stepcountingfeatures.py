@@ -75,7 +75,7 @@ def getSong(bpm):
         song_choice_differences.append((song_choices[s][0], (abs(song_choices[s][1] - bpm))))
     song_min = ("none", 100000)
     for s in song_choice_differences:
-        print(song_choice_differences[s][1])
+        print(s[1])
         if (s[1] < song_min[1]):
             song_min = s
     return song_min[0]
