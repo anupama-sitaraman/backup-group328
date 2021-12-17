@@ -13,7 +13,8 @@ from util import slidingWindow, reorient, reset_vars
 import pickle
 from sklearn import model_selection
 from sklearn import tree
-from sklearn.metrics import confusion_matrix
+import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 
 # %%---------------------------------------------------------------------------
 #
@@ -128,6 +129,9 @@ recall_arr_sitting = []
 recall_arr_dancing = []
 #fix
 for c in confusion_matricies:
+    plt.imshow(c)
+    plt.colorbar()
+    plt.show(block=True) 
     TP_running = c[0][0]
     TP_walking = c[1][1]
     TP_speed_walking = c[2][2]
